@@ -55,8 +55,8 @@ export class AppServiceService {
       )
   }
 
-  getFavoritePages(): Observable<string> {
-    return this.http.get<string>(this.rootURL + '/favorites')
+  getNamedPage(namedPage: string): Observable<string> {
+    return this.http.get<string>(this.rootURL + '/' + namedPage)
       .pipe(
         retry(1),
         catchError(this.httpError)

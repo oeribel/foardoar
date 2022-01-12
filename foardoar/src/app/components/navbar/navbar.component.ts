@@ -3,6 +3,7 @@ import {Group} from "../../model/group.model";
 import {AppServiceService} from "../../service/app-service.service";
 import {NavigationEnd, Router} from "@angular/router";
 import {filter} from "rxjs";
+import {Page} from "../../model/page.model";
 
 @Component({
   selector: 'app-navbar',
@@ -12,6 +13,9 @@ import {filter} from "rxjs";
 export class NavbarComponent implements OnInit {
   groups: Group[] = [];
   groupId: string = '';
+  over = false;
+  down = false;
+  placeholder = '';
 
   constructor(private appService: AppServiceService, private router: Router) {
   }
@@ -28,5 +32,22 @@ export class NavbarComponent implements OnInit {
         this.groupId = '';
       }
     });
+  }
+
+  onMouseOverInput() {
+    this.over = true;
+    this.placeholder = "Drop hier een url om op te slaan";
+  }
+  onMouseOutInput() {
+    this.over = false;
+    this.placeholder = "";
+  }
+
+  bla(event: any) {
+    console.log(event.target.value);
+    let theName = event.target.value;
+    const page = {...new Page(), name: theName , theurl: event.target.value};
+    this.appService.createPage(page).subscribe();
+    event.target.value = ' ';
   }
 }

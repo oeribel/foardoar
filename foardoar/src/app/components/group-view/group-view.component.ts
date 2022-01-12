@@ -28,7 +28,10 @@ export class GroupViewComponent implements OnInit {
       if(this.groupId){
         if(this.groupId === 'fav'){
           console.log(this.groupId)
-          this.loadFavorites();
+          this.loadFavorites('favorites');
+        }else if(this.groupId === 'overig'){
+          console.log(this.groupId)
+          this.loadFavorites('overig');
         }else{
           this.loadGroup(this.groupId);
         }
@@ -80,9 +83,9 @@ export class GroupViewComponent implements OnInit {
     // this.getIp();
   }
 
-  private loadFavorites() {
+  private loadFavorites(namedPage: string) {
     //get pages
-    this.appService.getFavoritePages().subscribe((data: {}) => {
+    this.appService.getNamedPage(namedPage).subscribe((data: {}) => {
       this.pages = JSON.parse(JSON.stringify(data))['data'];
       for (let page of this.pages) {
         this.appService.getScreenshotByPageId(page.id).subscribe((data: {}) => {

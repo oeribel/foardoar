@@ -12,7 +12,13 @@
         <li class="nav-item" *ngFor="let group of groups">
           <a class="nav-link active" aria-current="page" [routerLink]="['/group', group.id]"><i class="{{ group.icon }}"></i>&nbsp;{{group.name}}</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="['/group', 'overig']"><i class="b- bi-bookmarks-fill"></i> Overig</a>
+        </li>
       </ul>
+    </div>
+    <div class="nav-item float-right" >
+      <input type="input" [ngClass]="over ? 'dropurlinput_show' : 'dropurlinput'" (change)="bla($event)" (mouseover)="onMouseOverInput()" (mouseout)="onMouseOutInput()" [placeholder]="placeholder"/>
     </div>
     <span class="nav-item float-right">
       <button  type="button" class="btn btn-info btn-xs" [routerLink]="['/admingroup']"><i class="bi bi-collection"></i></button>

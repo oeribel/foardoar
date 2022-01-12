@@ -62,6 +62,10 @@ app.get('/api/favorites', (req, res) => {
     getPagesByFavorite(res);
 });
 
+app.get('/api/overig', (req, res) => {
+    getPagesByOverig(res);
+});
+
 app.get('/api/pages', (req, res) => {
     getPages(res);
 });

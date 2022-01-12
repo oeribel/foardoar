@@ -3,3 +3,13 @@
   font-size: .75rem;
   border-radius: .2rem;
 }
+.dropurlinput{
+  border: transparent;
+  background: transparent;
+  width: 450px;
+}
+.dropurlinput_show{
+   border: 2px solid black;
+   background: white;
+    width: 450px;
+}
