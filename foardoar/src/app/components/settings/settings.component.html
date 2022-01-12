@@ -1,0 +1,21 @@
+<p>settings works!</p>
+
+<table class="table table-striped group-table">
+  <thead>
+  <th>Naam</th>
+  <th>Volgorde</th>
+  <th>Parent</th>
+  <th>Icon</th>
+  <th></th>
+  <th></th>
+  <th><div><button  type="button" class="btn btn-primary btn-xs" (click)="addSetting()"><i class="bi bi-plus-square"></i></button></div></th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let setting of settings">
+    <td>{{ setting.name }}</td>
+    <td>{{ setting.description }}</td>
+    <td>{{ setting.value }}</td>
+    <td><button  type="button" class="btn btn-primary btn-xs" (click)="editSetting(setting)"><i class="bi bi-pencil"></i></button></td>
+  </tr>
+  </tbody>
+</table>

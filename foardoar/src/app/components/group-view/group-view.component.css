@@ -1,0 +1,35 @@
+.linkpage, .linkfolder {
+  float: left;
+  padding-right: 5px;
+}
+.linkimg{
+  border-bottom: 5px solid #e7ecf0;
+  border-left: 3px solid #e7ecf0;
+  border-right: 3px solid #e7ecf0;
+}
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+h3 a, div { color: black}
+.example-handle {
+  position: relative;
+  top: -240px;
+  right: -220px;
+  color: #4e4d4d;
+  cursor: move;
+  width: 24px;
+  height: 24px;
+}
+#searchform {
+  text-align: center;
+  padding-bottom: 25px;
+}
+#searchform input{
+  width: 350px;
+  height: 36px;
+  border: 1px solid grey;
+}
+#searchform input:focus{
+  border: 1px solid grey;
+}

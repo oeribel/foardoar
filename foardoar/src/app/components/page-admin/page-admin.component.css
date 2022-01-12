@@ -1,0 +1,11 @@
+table {
+  max-width: 100vw;
+}
+tr {
+  max-width: 90vw;
+}
+td div{
+  max-width: 90vw;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}

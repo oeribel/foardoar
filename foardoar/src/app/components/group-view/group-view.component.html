@@ -1,0 +1,36 @@
+<div class="container">
+  <h2 *ngIf="group">{{group.name}}</h2>
+  <div *ngIf="parent">
+    <h3><a [routerLink]="['/group', parent.id]">{{parent.name}}</a></h3>
+  </div>
+  <ng-container *ngIf="groupId">
+    <div *ngIf="groupId === 'fav'" id="searchform">
+      <img src="https://duckduckgo.com/favicon.ico">&nbsp;
+      <input type="text" autofocus (keyup)="handleKeyUp($event)"/>
+    </div>
+  </ng-container>
+  <div class="row">
+    <div class="col-sm">
+      <div *ngFor="let page of pages" class="linkpage">
+        <a href="{{page.theurl}}">
+          <img src="http://{{getLocation()}}/images/group_header.png" style="width: {{getWidth()}}px;"/><br/>
+          <img class="linkimg" src="http://{{getLocation()}}{{page.screenshot}}" style="width: {{getWidth()}}px; height: {{getHeight()}}px"/>
+          <div>
+            <div style="float: left"><!--img src="{{page.theurl}}/favicon" style="width: 30px"/--> {{page.name}}</div>
+            <div style="float: right">{{getStatus(page)}}</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <div *ngFor="let group of groups" class="linkfolder">
+        <a [routerLink]="['/group', group.id]">
+          <img src="http://{{getLocation()}}/images/group1.png" style="width:  {{getWidth()}}px;"/><br/>
+          <div>{{group.name}}</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<h2>Links admin</h2>
+
+<form *ngIf="edit" [formGroup]="editForm">
+  <div class="mb-3">
+    <label for="titel" class="form-label">Titel</label>
+    <input type="text" class="form-control" id="titel" formControlName="name">
+  </div>
+  <div class="mb-3">
+    <label for="icon" class="form-label">Url</label>
+    <input type="text" class="form-control" id="icon" formControlName="theurl">
+  </div>
+  <div class="mb-3" *ngIf="groups">
+    <label for="group" class="form-label">Valt onder</label>
+    <select id="group" class="form-control" formControlName="parentgroup">
+      <ng-container *ngFor="let group of groups">
+        <option *ngIf="group.id === groupId" value="{{group.id}}" selected>{{group.name}}</option>
+        <option *ngIf="group.id !== groupId" value="{{group.id}}">{{group.name}}</option>
+      </ng-container>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="opslaan()" btn-xs>Submit</button>
+  <button type="button" class="btn btn-primary" (click)="annuleer()" btn-xs>Cancel</button>
+</form>
+
+<table class="table table-striped group-table">
+  <thead>
+  <th>Naam</th>
+  <th>Url</th>
+  <th>Groep</th>
+  <th>Volgorde</th>
+  <th>Favo</th>
+  <th></th>
+  <th></th>
+  <th><div><button  type="button" class="btn btn-primary btn-xs" (click)="addPage()"><i class="bi bi-plus-square"></i></button></div></th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let page of pages">
+    <td>{{ page.name }}</td>
+    <td><div>{{ getShortenedUrl(page) }}</div></td>
+    <td>{{ page.parentgroup }}</td>
+    <td>{{ page.ordering }}</td>
+    <td>{{ page.favorite }}</td>
+    <td><button  type="button" class="btn btn-primary btn-xs" (click)="editPage(page)"><i class="bi bi-pencil"></i></button></td>
+    <td><button  type="button" class="btn btn-danger btn-xs" (click)="removePage(page)"><i class="bi bi-trash"></i></button></td>
+    <td><button  type="button" class="btn btn-info btn-xs" (click)="screenshot(page)"><i class="bi bi-camera"></i></button></td>
+  </tr>
+  </tbody>
+</table>
+
+

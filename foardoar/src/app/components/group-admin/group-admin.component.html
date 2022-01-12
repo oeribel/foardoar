@@ -1,0 +1,50 @@
+<h2>Groepen</h2>
+<form *ngIf="edit" [formGroup]="editForm">
+  <div class="mb-3">
+    <label for="titel" class="form-label">Titel</label>
+    <input type="text" class="form-control" id="titel" formControlName="name">
+  </div>
+  <div class="mb-3">
+    <label for="icon" class="form-label">Icoon</label>
+    <input type="text" class="form-control" id="icon" formControlName="icon">
+  </div>
+  <div class="mb-3">
+    <label for="order" class="form-label">Volgorde</label>
+    <input type="number" class="form-control" id="order" formControlName="ordering">
+  </div>
+  <div class="mb-3" *ngIf="groups">
+    <label for="valtOnder" class="form-label">Valt onder</label>
+    <select id="valtOnder" class="form-control" formControlName="parentgroup">
+      <ng-container *ngFor="let group of groups">
+        <option *ngIf="group.id === groupId" value="{{group.id}}" selected>{{group.name}}</option>
+        <option *ngIf="group.id !== groupId" value="{{group.id}}">{{group.name}}</option>
+      </ng-container>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary" (click)="opslaan()" btn-xs>Submit</button>
+  <button type="button" class="btn btn-primary" (click)="annuleer()" btn-xs>Cancel</button>
+</form>
+
+<table class="table table-striped group-table">
+  <thead>
+  <th>Naam</th>
+  <th>Volgorde</th>
+  <th>Parent</th>
+  <th>Icon</th>
+  <th></th>
+  <th></th>
+  <th><div><button  type="button" class="btn btn-primary btn-xs" (click)="addGroup()"><i class="bi bi-plus-square"></i></button></div></th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let groep of groups">
+    <td>{{ groep.name }}</td>
+    <td>{{ groep.ordering }}</td>
+    <td>{{ groep.parentgroup }}</td>
+    <td><i class="{{ groep.icon }}"></i></td>
+    <td>{{ groep.icon }}</td>
+    <td><button  type="button" class="btn btn-primary btn-xs" (click)="editGroup(groep)"><i class="bi bi-pencil"></i></button></td>
+    <td><button  type="button" class="btn btn-danger btn-xs" (click)="removeGroup(groep)"><i class="bi bi-trash"></i></button></td>
+  </tr>
+  </tbody>
+</table>
