@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="settings">
   <h2 *ngIf="group">{{group.name}}</h2>
   <div *ngIf="parent">
     <h3><a [routerLink]="['/group', parent.id]">{{parent.name}}</a></h3>
@@ -23,7 +23,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="subview && subview === 'folder'">
     <div class="col-sm">
       <div *ngFor="let group of groups" class="linkfolder">
         <a [routerLink]="['/group', group.id]">
@@ -33,4 +33,10 @@
       </div>
     </div>
   </div>
+  <ng-container *ngIf="subview && subview === 'tree'">
+    <div class="row" *ngFor="let group of groups">
+      <h2 *ngIf="group">{{group.name}}</h2>
+      <div class="col-sm"></div>
+    </div>
+  </ng-container>
 </div>

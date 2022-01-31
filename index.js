@@ -99,6 +99,14 @@ app.get('/api/settings', (req, res) => {
     getSettings(res);
 });
 
+app.post('/api/settings', (req, res) => {
+    createSetting(req.body, res);
+});
+
+app.put('/api/settings', (req, res) => {
+    updateSetting(req.body, res);
+});
+
 // OTHER
 app.get('/api/ip', (req, res) => {
     require('dns').lookup(require('os').hostname(), function (err, add, fam) {

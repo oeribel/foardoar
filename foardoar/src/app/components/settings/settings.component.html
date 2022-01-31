@@ -1,5 +1,23 @@
 <p>settings works!</p>
 
+<form *ngIf="edit" [formGroup]="editForm">
+  <div class="mb-3">
+    <label for="titel" class="form-label">Naam</label>
+    <input type="text" class="form-control" id="titel" formControlName="name">
+  </div>
+  <div class="mb-3">
+    <label for="icon" class="form-label">Omschrijving</label>
+    <input type="text" class="form-control" id="icon" formControlName="description">
+  </div>
+  <div class="mb-3">
+    <label for="icon" class="form-label">Value</label>
+    <input type="text" class="form-control" id="icon" formControlName="value">
+  </div>
+
+  <button type="submit" class="btn btn-primary" (click)="opslaan()" btn-xs>Submit</button>
+  <button type="button" class="btn btn-primary" (click)="annuleer()" btn-xs>Cancel</button>
+</form>
+
 <table class="table table-striped group-table">
   <thead>
   <th>Naam</th>

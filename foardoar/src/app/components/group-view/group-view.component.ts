@@ -4,6 +4,7 @@ import {Page} from "../../model/page.model";
 import {AppServiceService} from "../../service/app-service.service";
 import {ActivatedRoute} from "@angular/router";
 import {Setting} from "../../model/setting.model";
+// import * as console from "console";
 
 @Component({
   selector: 'app-group-view',
@@ -18,6 +19,7 @@ export class GroupViewComponent implements OnInit {
   pages: Page[] = [];
   ip = '';
   groupId?: any
+  subview?: string;
 
   constructor(private appService: AppServiceService,
               private activatedRoute: ActivatedRoute) { }
@@ -50,6 +52,8 @@ export class GroupViewComponent implements OnInit {
     });
     this.appService.getSettings().subscribe((data: {}) => {
       this.settings = JSON.parse(JSON.stringify(data))['data'];
+      console.log(this.settings)
+      this.subview = this.getSetting('folderview');
     })
   }
 
@@ -121,6 +125,9 @@ export class GroupViewComponent implements OnInit {
   getSetting( name: string): string {
     for(let sett of this.settings){
       if(sett.name === name) {
+        if(name === 'folderview') {
+          console.log(sett.name + ' : ' + sett.value);
+        }
         return sett.value === undefined ? '' : sett.value;
       }
     }

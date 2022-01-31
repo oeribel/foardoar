@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import {Group} from "../model/group.model";
 import {Page} from "../model/page.model";
+import {Setting} from "../model/setting.model";
 
 class Groups {
 }
@@ -158,6 +159,22 @@ export class AppServiceService {
         retry(1),
         catchError(this.httpError)
       )
+  }
+
+  createSetting(setting: Setting): Observable<Setting> {
+    return this.http.post<Setting>(this.rootURL + '/settings', JSON.stringify(setting), this.httpHeader)
+        .pipe(
+            retry(1),
+            catchError(this.httpError)
+        )
+  }
+
+  updateSetting(setting: Setting): Observable<Setting> {
+    return this.http.put<Setting>(this.rootURL + '/settings', JSON.stringify(setting), this.httpHeader)
+        .pipe(
+            retry(1),
+            catchError(this.httpError)
+        )
   }
 
   ping(url: string){

@@ -9,6 +9,14 @@
     <label for="icon" class="form-label">Url</label>
     <input type="text" class="form-control" id="icon" formControlName="theurl">
   </div>
+  <div class="mb-3">
+    <label for="icon" class="form-label">Volgorde</label>
+    <input type="text" class="form-control" id="icon" formControlName="ordering">
+  </div>
+  <div class="mb-3">
+    <label for="icon" class="form-label">Favoriet</label>
+    <input type="checkbox" class="form-control" id="icon" formControlName="favorite">
+  </div>
   <div class="mb-3" *ngIf="groups">
     <label for="group" class="form-label">Valt onder</label>
     <select id="group" class="form-control" formControlName="parentgroup">
